@@ -7,8 +7,8 @@ from functools import partial
 from tqdm import tqdm
 
 from kiwipiepy import Kiwi
-from FINAL.module.preprocessing import TokenKiwi
-from FINAL.module.tg import Dictionary
+from module.preprocessing import TokenKiwi
+from module.tg import Dictionary
 
 
 class JH:

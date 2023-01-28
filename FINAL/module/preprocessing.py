@@ -52,7 +52,7 @@ class PreProcessing:
 
 class TokenKiwi:
     def __init__(self, path) -> None:
-        self.path = "C:/Users/user/Desktop/PinkWink_NLK_NLP_hackerthon/FINAL/data/word_dictionary.txt"
+        self.path = r"C:\Users\user\Desktop\workbench\started_from_the_bottom\FINAL\data\word_dictionary.txt"
         self.kiwi = Kiwi(model_type='sbg')
         self.setting()
 
