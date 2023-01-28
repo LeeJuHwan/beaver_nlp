@@ -24,27 +24,65 @@ class WordDict:
         self.UnitList = []
         
         # 표준화 사전
-        self.StandardDict = defaultdict(dict)
+        self.StandardDict = {}
         self.JamoToStandard = {}
         self.WordToStandard = {}
+        
+        self.token = TokenKiwi('s')
     
     def __del__(self):
         # 파일로 저장
         pass
     
     def updateDictonary(self, standard:str, word:str, idx:int=None, type:str='n'):
-        if type == 'n':
-            token = TokenKiwi('s')
-            token.dictionary_add(standard)
-            
+        """_summary_
+
+        Args:
+            standard (str): _description_
+            word (str): _description_
+            idx (int, ): _description_. Defaults to None.
+            type (str, [n,a,c]): n=New, a=Add, c=check. Defaults to 'n'.
+        """
+        if type == 'c':
             try:
-                self.StandardDict[standard]['wordList'].add(word)
+                if self.StandardDict[standard]:
+                    type = 'a'
             except:
-                self.StandardDict[standard]['wordList'] = {word}
-            self.StandardDict[standard]['jamo'] = j2hcj(h2j(standard))
+                type = 'n'
+            
+            
+        if type == 'n':
+            if word != standard:
+                self.token.dictionary_add([standard, word])
+            else:
+                self.token.dictionary_add(standard)
+            self.StandardDict[standard] = {}
+            self.StandardDict[standard]['wordList'] = {word}
+            # self.StandardDict[standard]['jamo'] = j2hcj(h2j(standard))
             
             self.WordToStandard[word] = standard
             self.JamoToStandard[j2hcj(h2j(standard))] = standard
+        
+        if type == 'a':
+            try:
+                self.WordToStandard[word]
+            except:
+                self.token.dictionary_add(word)
+            try:
+                self.WordToStandard[standard]
+            except:
+                self.token.dictionary_add(standard)    
+                
+            
+            ls = list(self.StandardDict[standard]['wordList'])
+            ls.append(word)
+            ls = set(ls)
+            self.StandardDict[standard]['wordList'] = ls
+            # self.StandardDict[standard]['jamo'] = j2hcj(h2j(standard))
+            
+            self.WordToStandard[word] = standard
+            self.JamoToStandard[j2hcj(h2j(standard))] = standard
+        
             
         # print(standard, word, idx)
         if idx:
@@ -119,12 +157,36 @@ class Algorithm:
     def __init__(self) -> None:
         pass
     
+    def text_clean(self, text):
+        try:
+            pattern = r'\([^)]*\)'
+            text = re.sub(pattern, '', text) # 괄호 제거
+            pattern = r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)' # E-mail제거
+            text = re.sub(pattern, '', text)
+            pattern = r'(http|ftp|https)://(?:[-\w.]|(?:%[\da-fA-F]{2}))+' # URL제거
+            text = re.sub(pattern, '', text)
+            pattern = r'[a-zA-Z]'    # 알파벳 제거
+            text = re.sub(pattern, '', text)
+            pattern = r'[0-9]'    # 숫자 -> 빈칸으로 대체
+            text = re.sub(pattern, ' ', text)
+            pattern = r'([ㄱ-ㅎㅏ-ㅣ]+)'  # 한글 자음, 모음 제거
+            text = re.sub(pattern, '', text)
+            pattern = r'<[^>]*>'         # HTML 태그 제거
+            text = re.sub(pattern, '', text)
+            pattern = r'[^\w\s]'         # 특수기호제거
+            text = re.sub(pattern, '', text)
+            text = text.strip(' ')
+            text = text.strip('\n')
+            return text
+        except:
+            return '에러'
+    
     
     
 
 class TokenKiwi:
     def __init__(self, path) -> None:
-        self.path = "C:/Users/user/Desktop/PinkWink_NLK_NLP_hackerthon/FINAL/data/word_dictionary.txt"
+        self.path = r"C:\Users\user\Desktop\started_from_the_bottom\FINAL\word_dictionary.txt"
         self.kiwi = Kiwi(model_type='sbg')
         self.setting()
 
