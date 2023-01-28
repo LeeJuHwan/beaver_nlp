@@ -201,10 +201,12 @@ class TokenKiwi:
     def dictionary_add(self, data, morph:str = 'NNG', weight:int = 100, mode:str = 'a'):
         with open(self.path, mode=mode, encoding='utf8') as o:
             if isinstance(data, str):
-                o.write(f'{data}\t{morph}\t{weight}\n')
+                if len(data.split(' ')) == 1:
+                    o.write(f'{data}\t{morph}\t{weight}\n')
             elif isinstance(data, list):
                 for d in data:
-                    o.write(f'{d}\t{morph}\t{weight}\n')
+                    if len(d.split(' ')) == 1:
+                        o.write(f'{d}\t{morph}\t{weight}\n')
         self.setting()
     
     def lambda_kiwi_spacing(self, menu):
