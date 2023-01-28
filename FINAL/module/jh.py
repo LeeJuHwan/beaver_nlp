@@ -66,7 +66,10 @@ class JH:
                         first_result = re.sub(pat, "", text.lower())
                         if len([j for j in result[0][0][i+1:] if j.tag == "SN"]) >= 1 :
                             none_list = lambda x : x[0]
-                            true_sn2, nnb2 = none_list([(k.form, result[0][0][i+1:][h+1].form) for h,k in enumerate(result[0][0][i+1:]) if k.tag == "SN"])
+                            try : 
+                                true_sn2, nnb2 = none_list([(k.form, result[0][0][i+1:][h+1].form) for h,k in enumerate(result[0][0][i+1:]) if k.tag == "SN"])
+                            except :
+                                true_sn2, nnb2 = none_list([(k.form, result[0][0][i+1:][-1].form) for h,k in enumerate(result[0][0][i+1:]) if k.tag == "SN"])
                             pat2 = re.compile(rf"({true_sn2}+{nnb2})")
                             word.append("".join(pat2.findall(first_result.lower())))
                             second_result = re.sub(pat2, "", first_result.lower())
@@ -81,7 +84,10 @@ class JH:
                             result_word = re.sub(else_pat, "", text.lower())
                             if len([j for j in result[0][0][i+1:] if j.tag == "SN"]) >= 1 :
                                 none_list = lambda x : x[0]
-                                false_sn2, another2, another_tag = none_list([(k.form, result[0][0][i+1:][h+1].form, result[0][0][i+1:][h+1].tag) for h,k in enumerate(result[0][0][i+1:]) if k.tag == "SN"])
+                                try : 
+                                    false_sn2, another2, another_tag = none_list([(k.form, result[0][0][i+1:][h+1].form, result[0][0][i+1:][h+1].tag) for h,k in enumerate(result[0][0][i+1:]) if k.tag == "SN"])
+                                except : 
+                                    false_sn2, another2, another_tag = none_list([(k.form, result[0][0][i+1:][-1].form, result[0][0][i+1:][-1].tag) for h,k in enumerate(result[0][0][i+1:]) if k.tag == "SN"])
                                 if another_tag == "NNB" :
                                     else_pat2 = re.compile(rf"([{false_sn2}]+[{another2}]+|[{false_sn2}]+ [{another2}]+)")
                                     result_word2 = re.sub(else_pat2, "", result_word.lower())
