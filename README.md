@@ -3,9 +3,11 @@
 #### 1.27 ~ 1.29
 
 #### 팀원 
+
 |이름|협업|깃허브|
-|:김택관:||:최초 사전 구축 알고리즘 구현, 단어간 유사도 및 우선 순위 알고리즘 구현:||:https://github.com/KimTaekGwan:|
-|:이주환:||:전처리 알고리즘 구현, 불용어 데이터, 옵션 데이터, 고유명사 데이터 수집,:||:https://github.com/LeeJuHwan:|
+|:---|:---:|:---:|
+|김택관|최초 사전 구축 알고리즘 구현, 단어간 유사도 및 우선 순위 알고리즘 구현|https://github.com/KimTaekGwan|
+|이주환|전처리 알고리즘 구현, 불용어 데이터, 옵션 데이터, 고유명사 데이터 수집|https://github.com/LeeJuHwan|
 
 ---
 <img width="1201" alt="image" src="https://user-images.githubusercontent.com/118493627/215301191-933f308b-7798-40a9-b6b7-30e3092c433d.png">
