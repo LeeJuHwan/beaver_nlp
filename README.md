@@ -1,6 +1,12 @@
 # 비버웍스 키오스크 음식 메뉴 표준화 해커톤
 
 #### 1.27 ~ 1.29
+
+#### 팀원 
+|이름|협업|깃허브|
+|:김택관:||:최초 사전 구축 알고리즘 구현, 단어간 유사도 및 우선 순위 알고리즘 구현:||:https://github.com/KimTaekGwan:|
+|:이주환:||:전처리 알고리즘 구현, 불용어 데이터, 옵션 데이터, 고유명사 데이터 수집,:||:https://github.com/LeeJuHwan:|
+
 ---
 <img width="1201" alt="image" src="https://user-images.githubusercontent.com/118493627/215301191-933f308b-7798-40a9-b6b7-30e3092c433d.png">
 
@@ -14,7 +20,7 @@
 <img width="1137" alt="image" src="https://user-images.githubusercontent.com/118493627/215301305-fdc9548e-00b8-4c83-9965-22256afed9d4.png">
 
 ### principle
-<img width="385" alt="image" src="https://user-images.githubusercontent.com/118493627/215301375-037cd64c-1de3-4496-8619-a36ae4753e43.png">
+<img width="534" alt="image" src="https://user-images.githubusercontent.com/118493627/215302502-304a8cf6-0ea8-4ce6-ace2-9ac4178414ba.png">
 
 #### Algorithm to function
 ```
@@ -57,6 +63,9 @@ def preprocessing(text) :
     return {"menu" : " ".join(ls),
             "std" : res}
 ```
+- return 
+
+<img width="1044" alt="image" src="https://user-images.githubusercontent.com/118493627/215302573-422ceb2b-63db-484a-971b-be66fa4105b1.png">
 
 
 ### Keyword
