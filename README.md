@@ -89,3 +89,11 @@ def preprocessing(text) :
 
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/118493627/215302131-f9d726e0-dd02-43af-a40d-40f6be55e812.png">
 
+
+### 해커톤 수료
+
+<img width="300" height = "250" alt="image" src="https://user-images.githubusercontent.com/118493627/215800235-edca3fd7-6886-4287-be5e-3901c18d6529.png">
+<img width="300" height = "250" alt="image" src="https://user-images.githubusercontent.com/118493627/215799948-791c1db9-2cdb-4fef-a5b1-c7eb402a07c6.png">
+
+
+
