@@ -92,6 +92,5 @@ def preprocessing(text) :
 
 ### 해커톤 수료
 
-<img width="200" height = "150" alt="image" src="https://user-images.githubusercontent.com/118493627/215800235-edca3fd7-6886-4287-be5e-3901c18d6529.png">
 
 
